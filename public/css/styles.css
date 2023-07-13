@@ -1,0 +1,48 @@
+.btn-color{
+    background: #1abc9c;
+    color: #fff;
+}
+
+footer {
+    position: fixed !important;
+    text-align: center;
+    height: 55px;
+    bottom: 0;
+    width: 100%;
+    background: #1abc9c;
+    color: #fff;
+}
+
+
+.btn-success,
+.btn-success:hover,
+.btn-success:active,
+.btn-success:visited {
+    background-color: #1abc9c !important;
+}
+
+.navbar-brand {
+    color: black;
+    -webkit-transition: color 0.3s;
+    -moz-transition:    color 0.3s;
+    -ms-transition:     color 0.3s;
+    -o-transition:      color 0.3s;
+    transition:         color 0.3s;
+}
+
+.navbar-brand:hover {
+    color: #1abc9c;
+}
+
+.footer {
+    
+    
+    /* Set the fixed height of the footer here */
+    height: 50px;
+    
+  }
+
+  *{
+    margin: 0%;
+    padding: 0%;
+  }

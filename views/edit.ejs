@@ -1,0 +1,33 @@
+<%- include('header') %>
+<form action="/edit" method="post">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="form-group">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" id="exampleFormControlInput1" value="<%=titleValue%>" required>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1" class="form-label">Start typing a post</label>
+        <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="7" required><%=messageValue%></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-success btn-block">Update</button>
+      </div>
+    </div>
+  </div>
+</form>
+<pre>
+
+
+    
+</pre>
+
+  <%- include('footer') %>
