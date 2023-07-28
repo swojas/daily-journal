@@ -20,7 +20,7 @@ app.use(express.static("public"));
 app.get("/", function (req, res) {
   Post.find()
     .then(function (result) {
-      if(result.length === 0){
+      if (result.length === 0) {
         Post.create({
           title: "How to use",
           message: "You have the full freedom to read, create, edit and delete posts."
@@ -30,39 +30,46 @@ app.get("/", function (req, res) {
     })
 });
 
+
+let _postId;
 app.route("/edit")
-.get(function(req, res){
-  Post.findById({_id: req.query.data})
-  .then(function(foundQuery){
-    const title = foundQuery.title;
-    const message = foundQuery.message;
-    res.render("edit", {titleValue: title, messageValue: message})
+  .get(function (req, res) {
+    _postId = req.query.data;
+    console.log(_postId + " - postId in GET");
+    Post.findById({ _id: _postId })
+      .then(function (foundQuery) {
+        const title = foundQuery.title;
+        const message = foundQuery.message;
+        res.render("edit", { titleValue: title, messageValue: message });
+      })
+      .catch(function (err) {
+        console.log(err);
+        res.redirect("/");
+      });
   })
-  .catch(function(err){
-    console.log(err);
-  })
-})
-.post(function(req, res){
-    Post.deleteOne({id: req.query.data})
-  .then((update)=>{
-    console.log(update);
-  })
-  .catch((err)=>{
-    console.log(err);
-  })
+  .post(function (req, res) {
+    //const postId = req.query.data;
+    console.log(_postId + " - postId in POST");
+    Post.updateOne({ _id: _postId }, { $set: { title: req.body.title, message: req.body.message } })
+      .then((result) => {
+        console.log(result);
+        res.redirect("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        res.redirect("/");
+      });
+  });
 
-  Post.create({title: req.body.title, message: req.body.message});
-  res.redirect("/");
-})
 
-app.get("/delete", function(req, res){
-  Post.findByIdAndDelete({_id: req.query.data})
-  .then(function(update){
-    console.log(update);
-  })
-  .catch(function(err){
-    console.log(err);
-  })
+app.get("/delete", function (req, res) {
+  Post.findByIdAndDelete({ _id: req.query.data })
+    .then(function (update) {
+      console.log("delete get called");
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
   res.redirect("/")
 })
 
@@ -77,7 +84,7 @@ app.post("/submit", function (req, res) {
   });
 
   userPost.save();
-  
+
   res.redirect("/success_post");
 });
 
