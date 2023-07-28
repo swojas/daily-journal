@@ -43,16 +43,16 @@ app.route("/edit")
   })
 })
 .post(function(req, res){
-  Post.findOneAndUpdate(
-    {id: req.query.data},
-    {title: req.body.title, message: req.body.message})
-    .then((update)=>{
-      console.log(update);
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
-    res.redirect("/")
+    Post.deleteOne({id: req.query.data})
+  .then((update)=>{
+    console.log(update);
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+
+  Post.create({title: req.body.title, message: req.body.message});
+  res.redirect("/");
 })
 
 app.get("/delete", function(req, res){
