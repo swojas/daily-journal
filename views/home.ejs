@@ -43,10 +43,14 @@
       <%} else {%>
       <div class="container">
         <h1>
+          <%if(array[i].title.length > 50){%>
           <%=array[i].title.slice(0,50)%>...
+          <%}else{%>
+          <%=array[i].title%>
+          <%}%>
         </h1>
         <p>
-          <%=array[i].message.slice(0,50)%>...
+          <%=array[i].message.slice(0,140)%>...
           <div class="btn-group">
             <form action="/blog-posts/<%=array[i].title%>" method="get"><input
                   type="hidden" name="data" value="<%=array[i]._id%>"><button class="btn btn-color m-0 p-1"
