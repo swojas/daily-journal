@@ -48,7 +48,6 @@ app.route("/edit")
       });
   })
   .post(function (req, res) {
-    //const postId = req.query.data;
     console.log(_postId + " - postId in POST");
     Post.updateOne({ _id: _postId }, { $set: { title: req.body.title, message: req.body.message } })
       .then((result) => {
