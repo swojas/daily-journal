@@ -14,11 +14,17 @@
     <%if(array[i].message.length < 100){%>
       <div class="container">
       <h1>
-        <%=array[i].title%>
+        <%=array[i].title.slice(0,50)%>
       </h1>
       <p>
         <%=array[i].message%>
         <div class="btn-group">
+          <form action="/blog-posts/<%=array[i].title%>" method="get"><input
+            type="hidden" name="data" value="<%=array[i]._id%>"><button class="btn btn-color m-0 p-1"
+            type="submit">read more. 
+          </button>
+        </form>
+        <span class="mx-2"></span>
               <form action="/edit" method="get"><input
                 type="hidden" name="data" value="<%=array[i]._id%>"><button class="btn btn-color m-0 p-1"
                 type="submit">edit. 
@@ -37,10 +43,10 @@
       <%} else {%>
       <div class="container">
         <h1>
-          <%=array[i].title%>
+          <%=array[i].title.slice(0,50)%>...
         </h1>
         <p>
-          <%=array[i].message.slice(0,150)%>... 
+          <%=array[i].message.slice(0,50)%>...
           <div class="btn-group">
             <form action="/blog-posts/<%=array[i].title%>" method="get"><input
                   type="hidden" name="data" value="<%=array[i]._id%>"><button class="btn btn-color m-0 p-1"
