@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
 
-mongoose.connect("mongodb+srv://swojas:w5RNHCCu3Q8f1Ppz@cluster0.6ylqvbd.mongodb.net/blog?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://swojas:swojas123S@cluster0.6ylqvbd.mongodb.net/blog?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const PostsSchema = new mongoose.Schema({
   title: String,
